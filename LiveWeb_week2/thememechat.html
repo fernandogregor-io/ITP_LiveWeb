@@ -1,0 +1,64 @@
+<html>
+
+<head>
+	<link href="styles/style.css" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Share+Tech&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+	<meta charset="UTF-8">
+	<script type="text/javascript" src="/socket.io/socket.io.js"></script>
+	<script type="text/javascript">
+	
+
+		var socket = io.connect();
+
+		socket.on('connect', function () {
+			console.log("Connected");
+		});
+
+
+		// Receive from any event
+		// receive messages and put them
+		socket.on('chatmessage', function (data) {
+			console.log(data);
+			var image = '<p><img src="' + "" + data + '" style="max-width: 300px; height: auto;"></p>';
+
+			// append the image to the web body 
+			document.getElementById("images").innerHTML = document.getElementById("images").innerHTML + image
+		});
+
+		// sent image url to server (event trigger)
+		var showImage = function (message) {
+			console.log("message: " + message);
+			socket.emit("chatmessage", message);
+		};
+
+	</script>
+</head>
+
+<body>
+
+	<h1>The 2058 Meme Chat Room</h1>
+	<h3>Welcome to a future world in which we've learned how to communicate only through MEMES 💗 </h3> 
+	<img src="brainmeme.png" alt="brainmeme">
+	<h4>Instructions:</h4>
+			<ul>
+				<li>Let's try to create a conversation only with memes! </li>
+				<li>Right click on a web-based meme, copy the "Image Address", paste it to the chat and click 
+					"send!"</li>
+					<li>Try to imagine a real conversation flow responding to the last meme. </li>
+					<li>Don't push yourself too hard, it doesn't need to make too much sense 😜 </li>
+			</ul>
+
+			<img src="tomeme.png" alt="tomeme">
+			<hr>
+			
+			<div>
+				<div align="center">
+					<div id="images"></div>
+			<input type="url" id="message" name="message">
+			
+			<input type="button" value="send!" onclick="showImage(document.getElementById('message').value);">
+			</div>
+
+</body>
+
+</html>

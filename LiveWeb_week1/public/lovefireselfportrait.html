@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+
+
+    body {
+      margin: 0;
+      font-family: Arial;
+      font-size: 17px;
+    }
+
+    #myVideo {
+      position: fixed;
+      right: 0;
+      bottom: 0;
+      min-width: 100%;
+      min-height: 100%;
+    }
+
+    .content {
+      position: fixed;
+      bottom: 0;
+      background: rgba(0, 0, 0, 0.5);
+      color: #dc1616;
+      width: 100%;
+      padding: 20px;
+    }
+
+    #myBtn {
+      width: 200px;
+      font-size: 18px;
+      padding: 10px;
+      border: none;
+      background: #000;
+      color: rgb(255, 0, 0);
+      cursor: pointer;
+    }
+
+    #myBtn:hover {
+      background: #ddd;
+      color: black;
+    }
+  </style>
+</head>
+
+<body>
+
+  <video autoplay muted loop id="myVideo">
+    <source src="loginvideo.mp4" type="video/mp4">
+    Your browser does not support HTML5 video.
+  </video>
+
+  <div class="content">
+    <h1>the forest is on fire</h1>
+    <p>I love cold waterfalls. I love swiming. I love a queer dancefloor. I love living close to a park. I love biking
+      while listening to music. I love the silence even though it doesn't exist. I love invisible machines. I love
+      walking with my feet on the ground. I love the Fall. I love dancing. Sometimes I forget. Sometimes I make poetry. The fire won't burn the memories. </p>
+    <button id="myBtn" onclick="myFunction()">Breath</button>
+  </div>
+
+  <script>
+    var video = document.getElementById("myVideo");
+    var btn = document.getElementById("myBtn");
+
+    function myFunction() {
+      if (video.paused) {
+        video.play();
+        btn.innerHTML = "Breath";
+      } else {
+        video.pause();
+        btn.innerHTML = "Dance";
+      }
+    }
+
+   
+  </script>
+
+</body>
+
+</html>
